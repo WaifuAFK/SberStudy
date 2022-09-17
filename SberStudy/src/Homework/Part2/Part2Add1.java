@@ -42,7 +42,7 @@ public class Part2Add1 {
                 if (PASSWORD.charAt(i) >= 'a' && PASSWORD.charAt(i) <= 'z')
                     isSmallLetters = true;
 
-                if (PASSWORD.charAt(i) == '*' || PASSWORD.charAt(i) == '_' || PASSWORD.charAt(i) == '_')
+                if (PASSWORD.charAt(i) == '*' || PASSWORD.charAt(i) == '_' || PASSWORD.charAt(i) == '-')
                     isSpecialSymbols = true;
 
                 if (PASSWORD.charAt(i) >= '0' && PASSWORD.charAt(i) <= '9')
