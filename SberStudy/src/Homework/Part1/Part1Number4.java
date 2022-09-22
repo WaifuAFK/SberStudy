@@ -1,4 +1,4 @@
-package Homework;
+package Homework.Part1;
 
 /*
 На вход подается количество секунд, прошедших с начала текущего дня – count.

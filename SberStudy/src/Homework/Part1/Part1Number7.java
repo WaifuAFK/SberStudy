@@ -1,4 +1,4 @@
-package Homework;
+package Homework.Part1;
 
 /*
 На вход подается двузначное число n. Выведите число, полученное

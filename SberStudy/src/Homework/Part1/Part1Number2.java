@@ -1,4 +1,4 @@
-package Homework;
+package Homework.Part1;
 
 /*
 На вход подается два целых числа a и b. Вычислите и выведите среднее

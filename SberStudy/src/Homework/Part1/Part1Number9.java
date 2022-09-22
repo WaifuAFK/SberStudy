@@ -1,4 +1,4 @@
-package Homework;
+package Homework.Part1;
 
 /*
 На вход подается бюджет мероприятия – n тугриков. Бюджет на одного гостя – k

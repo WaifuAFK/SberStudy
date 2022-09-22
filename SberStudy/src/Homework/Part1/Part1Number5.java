@@ -1,4 +1,4 @@
-package Homework;
+package Homework.Part1;
 
 /*
 Переведите дюймы в сантиметры (1 дюйм = 2,54 сантиметров). На вход
