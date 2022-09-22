@@ -3,9 +3,8 @@ package Project;
 import java.util.Scanner;
 
 public class Project_Dollars {
+    static final double ROUBLES_PER_DOLLAR = 77.22;
     public static void main(String[] args) {
-
-        final double ROUBLES_PER_DOLLAR = 77.22;
         int dollars;
         double roubles;
         int digit;
@@ -13,6 +12,9 @@ public class Project_Dollars {
         int i;
 
         Scanner input = new Scanner(System.in);
+
+        // Отобразить инструкцию
+        instruct();
 
         // Получать количество конвертаций до тех пор,
         // пока не введено корректное значение
@@ -47,9 +49,28 @@ public class Project_Dollars {
                     System.out.print(" американских долларов равны ");
             }
 
-            roubles = ROUBLES_PER_DOLLAR * dollars;
+            // Конвертировать сумму денег в российские рубли
+            roubles = find_roubles(dollars);
 
+            // Отобразить сумму денег в российских рублях в пользу покупателя
             System.out.println((int) (roubles * 100) / 100.0 + " рублей.");
         }
+    }
+
+    /**
+     * Отображает инструкцию
+     */
+    public static void instruct(){
+        System.out.println("Эта программа конвертирует сумму денег "
+        + "из американских долларов в российские рубли.");
+        System.out.println("Курс покупки равен " + ROUBLES_PER_DOLLAR
+        + " рубля. \n");
+    }
+
+    /**
+     * Конвертирует сумму денег из американских долларов в российские рубли
+     */
+    public static double find_roubles(int dollars) {
+        return ROUBLES_PER_DOLLAR * dollars;
     }
 }
