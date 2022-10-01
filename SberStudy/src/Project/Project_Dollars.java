@@ -5,9 +5,8 @@ import java.util.Scanner;
 public class Project_Dollars {
     static final double ROUBLES_PER_DOLLAR = 77.22;
     public static void main(String[] args) {
-        int dollars;
-        double roubles;
-        int digit;
+        int[] dollarsArray;
+        double[] roublesArray;
         int n;
         int i;
 
@@ -23,38 +22,23 @@ public class Project_Dollars {
             n = input.nextInt();
         } while (n <= 0);
 
-        // До тех пор, пока не конвертированы все суммы, получать,
-        // отображать и конвертировать суммы денег в американских
-        // долларах и отображать суммы денег в российских рублях
-        for (i = 0; i < n; ++i) {
 
-            // Получить сумму денег в американских долларах
-            System.out.print("Введите сумму американских долларов: ");
-            dollars = input.nextInt();
+        // Получить n сумм денег в американских долларах
+        System.out.print("Введите " + n + " сумм денег "
+          + "в американских долларах через пробел : ");
+        dollarsArray = new int[n];
+        for (i = 0; i < n; ++i)
+            dollarsArray[i] = input.nextInt();
 
-            // Отобразить сумму денег в американских долларах
-            // c правильным окончанием
-            System.out.print(dollars);
+        // Конвертировать n сумм денег в российские рубли
+        roublesArray = find_roubles(dollarsArray, n);
 
-            if (5 <= dollars && dollars <= 20)
-                System.out.print(" американских долларов равны ");
-            else {
-                digit = dollars % 10;
-
-                if (digit == 1)
-                    System.out.print(" американский доллар равен ");
-                else if (2 <= digit && digit <= 4)
-                    System.out.print(" американских доллара равны ");
-                else
-                    System.out.print(" американских долларов равны ");
-            }
-
-            // Конвертировать сумму денег в российские рубли
-            roubles = find_roubles(dollars);
-
-            // Отобразить сумму денег в российских рублях в пользу покупателя
-            System.out.println((int) (roubles * 100) / 100.0 + " рублей.");
-        }
+        // Отобразить в таблице n сумм денег в американских долларах и
+        // эквивалентные им суммы денег в российских рублях в пользу покупателя
+        System.out.println("\n  Сумма, ₽  Сумма, $");
+        for (i = 0; i < n; ++i)
+            System.out.println("\t" + dollarsArray[i] + "\t"
+            + (int)(roublesArray[i] * 100) / 100.0);
     }
 
     /**
@@ -68,9 +52,15 @@ public class Project_Dollars {
     }
 
     /**
-     * Конвертирует сумму денег из американских долларов в российские рубли
+     * Конвертирует n сумм денег из американских долларов в российские рубли
      */
-    public static double find_roubles(int dollars) {
-        return ROUBLES_PER_DOLLAR * dollars;
+    public static double[] find_roubles(int[] dollarsArray, int n) {
+        double[] roublesArray = new double[n];
+        int i;
+
+        for (i = 0; i < n; ++i)
+            roublesArray[i] = ROUBLES_PER_DOLLAR * dollarsArray[i];
+
+        return roublesArray;
     }
 }
