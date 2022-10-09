@@ -51,19 +51,28 @@ public class N2Part2Number2 {
 
         int[][] matrixArray = new int[N][N];
 
-        for (int i = Y1; i <= Y2; i++) {
-            for (int j = X1; j <= X2; j++) {
-                matrixArray[i][j] = 1;
-            }
+        //1 цикл для верхней грани
+        for (int i = X1; i <= X2; i++) {
+            matrixArray[Y1][i] = 1;
         }
 
+        // 2 цикл для боковых граней (середина должна быть пустой)
+        for (int i = Y1 + 1; i < Y2; i++) {
+            matrixArray[i][X1] = 1;
+            matrixArray[i][X2] = 1;
+        }
 
-        for (int[] ints : matrixArray) {
-            for (int anInt : ints) {
-                System.out.print(anInt + " ");
+        //3 цикл для нижней грани грани
+        for (int i = X1; i <= X2; i++) {
+            matrixArray[Y2][i] = 1;
+        }
+
+        for (int i = 0; i < matrixArray.length; i++) {
+            System.out.print(matrixArray[i][0]);
+            for (int j = 1; j < matrixArray[i].length; j++) {
+                System.out.print(" " + matrixArray[i][j]);
             }
             System.out.println();
         }
-        
     }
 }
