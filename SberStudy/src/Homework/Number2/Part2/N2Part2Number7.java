@@ -36,12 +36,15 @@ package Homework.Number2.Part2;
  */
 
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class N2Part2Number7 {
 
     public static void main(String[] args) {
-        String score = "";
+        int firstPlace = 0;
+        int secondPlace = 0;
+        int thirdPlace = 0;
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
@@ -62,15 +65,42 @@ public class N2Part2Number7 {
             }
         }
 
-        for (int i = 0; i < N; i++) {
-            System.out.println(matrixParticipants[0][i] + ": " + matrixParticipants[1][i] + ", " + averageArithmetic(matrixScore, i));
+        // Создать массив с вычисленнным ср арифметическим.
+        double[] matrixScoreCounted = new double[N];
+
+        for (int i = 0; i < matrixScoreCounted.length; i++) {
+            matrixScoreCounted[i] = averageArithmetic(matrixScore, i);
         }
+
+        // найти индексы трех максимальных значений
+        double[] matrixScoreSortedAndCounted = matrixScoreCounted.clone();
+        Arrays.sort(matrixScoreSortedAndCounted);
+
+        for (int i = 0; i < matrixScoreCounted.length; i++) {
+            if (matrixScoreSortedAndCounted[matrixScoreSortedAndCounted.length - 1] == matrixScoreCounted[i]) {
+                firstPlace = i;
+            }
+            if (matrixScoreSortedAndCounted[matrixScoreSortedAndCounted.length - 2] == matrixScoreCounted[i]) {
+                secondPlace = i;
+            }
+            if (matrixScoreSortedAndCounted[matrixScoreSortedAndCounted.length - 3] == matrixScoreCounted[i]) {
+                thirdPlace = i;
+            }
+        }
+
+        String firstResult = String.valueOf(matrixScoreCounted[firstPlace]);
+        String secondResult = String.valueOf(matrixScoreCounted[secondPlace]);
+        String thirdResult = String.valueOf(matrixScoreCounted[thirdPlace]);
+
+        System.out.println(matrixParticipants[0][firstPlace] + ": " + matrixParticipants[1][firstPlace] + ", " + firstResult.substring(0, 3));
+        System.out.println(matrixParticipants[0][secondPlace] + ": " + matrixParticipants[1][secondPlace] + ", " + secondResult.substring(0, 3));
+        System.out.println(matrixParticipants[0][thirdPlace] + ": " + matrixParticipants[1][thirdPlace] + ", " + thirdResult.substring(0, 3));
 
     }
 
     public static double averageArithmetic(int[][] array, int column) {
         double result = 0;
-        result = (double) (array[column][0] + array[column][1] + array[column][2]) / (double) array[column].length;
+        result = ((array[column][0] + array[column][1] + array[column][2]) / (double) array[column].length) * 10 / 10.0;
         return result;
     }
 }
